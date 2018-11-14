@@ -34,9 +34,9 @@ stations = {'EVN': ['EF', 'MC', 'ON', 'TR', 'JB2', 'WB', 'NT', 'SH', 'YS', 'HH',
             # 'Arecibo': ['AR'],
             'eMERLIN': ['CM', 'KN', 'TA', 'DE', 'DA'],
             'VLBA': ['VLBA-BR', 'VLBA-FD', 'GBT', 'VLBA-HN', 'VLBA-KP', 'VLBA-LA', 'VLBA-MK',
-                    'VLBA-NL', 'VLBA-OV', 'PT', 'VLBA-SC', 'VLA'],
-            'LBA': ['HO', 'PA', 'ATCA', 'CD', 'MO', 'TD', 'WW'],
-            'KVN': ['KVN']}
+                    'VLBA-NL', 'VLBA-OV', 'VLBA-PT', 'VLBA-SC', 'VLA'],
+            'LBA': ['HO', 'PA', 'ATCA', 'CD', 'MO', 'TD70', 'WW'],
+            'KVN': ['KU', 'KT', 'KY']}
 # Include some more stations in some of the options
 # Arecibo is tricky. Quite limited FoV!!!!!!!
 
