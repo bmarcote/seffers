@@ -24,10 +24,10 @@ class Source:
         - noObs: the number of times this source has been observed in the IVS cat (useful filter maybe)
         - fluxes: dict of fluxes with band as key names.
         """
-        self.source = name
+        self.name = name
         self.ivsname = ivsname
         self.coord = coord
         self._noObs = noObs
-        self.fluxes = fluxes
+        self.flux = fluxes
 
         
