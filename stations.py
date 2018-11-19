@@ -79,7 +79,8 @@ class Station:
         elevation larger than the entered one).
         """
         elevations = self.source_elevation(source_coord, obs_times)
-        return np.where(elevations >= min_elevation)
+        return np.any(elevations >= min_elevation)
+        
 
 
     def has_frequency(self, band):
