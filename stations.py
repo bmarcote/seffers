@@ -79,7 +79,7 @@ class Station:
         elevation larger than the entered one).
         """
         elevations = self.source_elevation(source_coord, obs_times)
-        return np.where(elevations.deg >= min_elevation)
+        return np.any(elevations >= min_elevation)
         
 
 
