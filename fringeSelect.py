@@ -6,7 +6,7 @@ import math
 import webbrowser
 import requests
 from os import path,remove
-from tqdm import tqdm
+
 
 
 from stations import Station
@@ -35,23 +35,13 @@ parser.add_argument('stations',type=str, nargs='+', help="Space delimited list o
 
 args = parser.parse_args()
 
+directory = path.dirname(path.realpath(__file__))
+import wget
 #need to get rfc catalogue if we don't have it
-if not path.isfile("./rfc_2018c_cat.txt"):
+if not path.isfile(directory+"/rfc_2018c_cat.txt"):
     print("RFC VLBI Source Position Catalogue not found, downloading.\nThis might take a moment...")
     url = "http://astrogeo.org/vlbi/solutions/rfc_2018c/rfc_2018c_cat.txt"
-    r = requests.get(url, stream=True)
-    # Total size in bytes.
-    total_size = int(r.headers.get('content-length', 0));
-    block_size = 1024
-    wrote = 0
-    with open('rfc_2018c_cat.txt', 'wb') as f:
-            for data in tqdm(r.iter_content(block_size), total=math.ceil(total_size//block_size) , unit='KB', unit_scale=True):
-                wrote = wrote  + len(data)
-                f.write(data)
-    if total_size != 0 and wrote != total_size:
-        print("ERROR, something went wrong with the download.")
-        remove("./rfc_2018c_cat.txt")
-        sys.exit(1)
+    wget.download(url, out=directory)
     print("Done")
     
 #rfc only has fluxes for bands, s, c, u, and k so pick the closest band to requested.
@@ -72,12 +62,12 @@ else:
 
 
 #load station information for all stations.
-stationList = Station.stations_from_file('./station_location.txt')
+stationList = Station.stations_from_file(directory+'/station_location.txt')
 stations = [stationList[station.upper()] for station in args.stations]
 
 obsTimes = get_obs_times(get_time(args.timeStart), args.duration)
 
-sourceCat = load_rfc_cat("./rfc_2018c_cat.txt", rfcBand, args.min_flux)
+sourceCat = load_rfc_cat(directory+"/rfc_2018c_cat.txt", rfcBand, args.min_flux)
 sources = get_up_sources(stations, sourceCat, obsTimes, minEl=args.min_el, minFluxBand=rfcBand)
 
 #ask which source to plot
