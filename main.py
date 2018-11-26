@@ -105,7 +105,7 @@ def update_data(attrname, old, new):
         vs = np.zeros_like(ys) + counter*u.deg
         condition = np.where(ys >= elevation_limit.value*u.deg)
         data[a_station].data = dict(x=times_obs.datetime[condition], y=ys[condition],
-                        v=vs[condition], station=[all_stations[a_station].station]*len(ys[condition]),
+                        v=vs[condition], station=[all_stations[a_station].name]*len(ys[condition]),
                         code=[all_stations[a_station].code]*len(ys[condition]))
         # Remove stations that are not anymore in the selected_stations
 
@@ -137,10 +137,10 @@ for a_station in selected_all_stations:
     vs = np.zeros_like(ys) + counter*u.deg
     condition = np.where(ys >= elevation_limit.value*u.deg)
     data[a_station] = ColumnDataSource(data=dict(x=times_obs.datetime[condition], y=ys[condition],
-                        v=vs[condition], station=[all_stations[a_station].station]*len(ys[condition]),
+                        v=vs[condition], station=[all_stations[a_station].name]*len(ys[condition]),
                         code=[all_stations[a_station].code]*len(ys[condition])))
     # data[a_station] = ColumnDataSource(data=dict(x=times_obs.datetime, y=ys, #v=vs,
-    #                     station=[all_stations[a_station].station]*len(ys)))
+    #                     station=[all_stations[a_station].name]*len(ys)))
     counter -= 1
 
 

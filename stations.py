@@ -23,7 +23,7 @@ class Station:
             in cm. The values will be given in Jy. If a wavelngth is given, a correct
             SEFD is assumed (i.e. no empty or n/a values are expected to be found).
         """
-        self.station = name
+        self.name = name
         self.code = codename
         self.location = location
         self.sefd = sefds

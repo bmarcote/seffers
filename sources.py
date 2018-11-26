@@ -49,7 +49,7 @@ class Source:
         ax.set_xlabel("Time")
         for station in stations:
             els = station.source_elevation(self.coord, obsTimes).deg
-            ax.plot(obsTimes.datetime, els, label=station.station)
+            ax.plot(obsTimes.datetime, els, label=station.name)
     
         plt.legend()
         plt.show()
