@@ -56,7 +56,7 @@ class Source:
 
     def find_nmes(self):
         #scrape the ftp tests
-        ftpPage = urlopen("http://www.evlbi.org/tog/ftp_fringes/ftp.html")
+        ftpPage = urlopen("http://old.evlbi.org/tog/ftp_fringes/ftp.html")
         bsFtpPage = bs(ftpPage.read(), features="html5lib")
         links=[]
         for link in bsFtpPage.findAll('a'):
