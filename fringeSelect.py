@@ -40,7 +40,7 @@ import wget
 #need to get rfc catalogue if we don't have it
 if not path.isfile(directory+"/rfc_2021c_cat.txt"):
     print("RFC VLBI Source Position Catalogue not found, downloading.\nThis might take a moment...")
-    url = "http://astrogeo.org/vlbi/solutions/rfc_2018c/rfc_2018c_cat.txt"
+    url = "http://astrogeo.org/vlbi/solutions/rfc_2021c/rfc_2021c_cat.txt"
     wget.download(url, out=directory)
     print("Done")
 
@@ -67,7 +67,7 @@ stations = [stationList[station.upper()] for station in args.stations]
 
 obsTimes = get_obs_times(get_time(args.timeStart), args.duration)
 
-sourceCat = load_rfc_cat(directory+"/rfc_2018c_cat.txt", rfcBand, args.min_flux)
+sourceCat = load_rfc_cat(directory+"/rfc_2021c_cat.txt", rfcBand, args.min_flux)
 sources = get_up_sources(stations, sourceCat, obsTimes, minEl=args.min_el, minFluxBand=rfcBand)
 
 #ask which source to plot
