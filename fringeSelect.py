@@ -38,12 +38,12 @@ args = parser.parse_args()
 directory = path.dirname(path.realpath(__file__))
 import wget
 #need to get rfc catalogue if we don't have it
-if not path.isfile(directory+"/rfc_2018c_cat.txt"):
+if not path.isfile(directory+"/rfc_2021c_cat.txt"):
     print("RFC VLBI Source Position Catalogue not found, downloading.\nThis might take a moment...")
     url = "http://astrogeo.org/vlbi/solutions/rfc_2018c/rfc_2018c_cat.txt"
     wget.download(url, out=directory)
     print("Done")
-    
+
 #rfc only has fluxes for bands, s, c, u, and k so pick the closest band to requested.
 if args.band in ['l', 's']:
     rfcBand = 's'
@@ -95,12 +95,12 @@ while True:
                 print ("{:55} {:55}".format(a, b))
         else:
             print("No NME has included this source")
-                
-                             
-        
+
+
+
         #plot the elevations for the selected source
         sources[srcIndex].plot_elevation(stations, obsTimes)
-        
+
     else:
         print("Not in range")
 

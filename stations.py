@@ -80,7 +80,7 @@ class Station:
         """
         elevations = self.source_elevation(source_coord, obs_times)
         return np.any(elevations >= min_elevation)
-        
+
 
 
     def has_frequency(self, band):
